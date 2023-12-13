@@ -81,7 +81,7 @@ npm install
 ``` bash
 node app.js
 ```
-    Isso iniciará o servidor localmente. Acesse `http://localhost:3000` para ver a aplicação em funcionamento.
+Isso iniciará o servidor localmente. Acesse `http://localhost:3000` para ver a aplicação em funcionamento.
 
 ---
 ---
@@ -94,7 +94,7 @@ node app.js
 ``` bash
 docker build -t nome-da-imagem .
 ```
-    Certifique-se de estar no diretório onde se encontra o Dockerfile.
+Certifique-se de estar no diretório onde se encontra o Dockerfile.
 
 Exemplo:
 ``` bash
@@ -105,8 +105,8 @@ docker build -t lieko0/devops-trab:v1 .
 ``` bash
 docker run -p 3000:3000 nome-da-imagem
 ```
-    Isso mapeia a porta 3000 do contêiner para a porta 3000 do seu sistema local.
-    Se tudo estiver configurado corretamente, será possível testar a aplicação acessando `http://localhost:3000`.
+Isso mapeia a porta 3000 do contêiner para a porta 3000 do seu sistema local.
+Se tudo estiver configurado corretamente, será possível testar a aplicação acessando `http://localhost:3000`.
 
 Exemplo:
 ``` bash
@@ -121,20 +121,21 @@ Aqui, você publicará a imagem Docker criada no passo anterior no Docker Hub.
 #### Comandos de como publicar no Docker Hub:
 
 1. **Faça login no Docker Hub:**
-    ``` bash
+``` bash
 docker login
 ```      
-    Insira suas credenciais do Docker Hub quando solicitado.
+Insira suas credenciais do Docker Hub quando solicitado.
 
 2. **Faça o push da imagem para o Docker Hub:**
 
-   ``` bash
-docker push usuario/nome-da-imagem:tag
-```
-    Isso enviará a imagem para o seu repositório no Docker Hub.
-Exemplo:
 ``` bash
 docker push usuario/nome-da-imagem:tag
+```
+Isso enviará a imagem para o seu repositório no Docker Hub.
+
+Exemplo:
+``` bash
+docker push lieko0/devops-trab:v1
 ```
 
 ---
@@ -153,19 +154,19 @@ kind create cluster
 Instale o Helm seguindo a documentação oficial.
 
 2. **Crie um Chart Helm para sua aplicação:**
-    ``` bash
+``` bash
 helm create nome-do-chart
 ```
-    Isso criará uma estrutura de diretório para seu chart Helm.
+Isso criará uma estrutura de diretório para seu chart Helm.
 
 3. **Personalize o Chart com os recursos necessários (Deployment, Service, etc.):** Edite os arquivos `values.yaml`, `deployment.yaml`, e outros conforme necessário para sua aplicação.
-    O `helm` por default cria vários arquivos de template, mas alguns deles forma modificados e outros criados.
-    Para a aplicação em questão, foram **criados** o template de `secret.yaml` e `config.yaml`.
-    O tamplate de `deployment.yaml` foi **modificado** para incluir as variáveis de ambiente advindas do Secret e do ConfigMap.
-    As modificações principais na `values.yaml` foram as informações da imagem do deployment e as informações do Secret e ConfigMap.
+- O `helm` por default cria vários arquivos de template, mas alguns deles forma modificados e outros criados.
+- Para a aplicação em questão, foram **criados** o template de `secret.yaml` e `config.yaml`.
+- O tamplate de `deployment.yaml` foi **modificado** para incluir as variáveis de ambiente advindas do Secret e do ConfigMap.
+- As modificações principais na `values.yaml` foram as informações da imagem do deployment e as informações do Secret e ConfigMap.
 
 4. **Instale o Chart no Kubernetes:**
-    ``` bash
+``` bash
 helm install nome-da-liberacao ./nome-do-chart
 ```
-    Isso instalará sua aplicação no cluster Kubernetes usando o Helm.
+Isso instalará sua aplicação no cluster Kubernetes usando o Helm.
