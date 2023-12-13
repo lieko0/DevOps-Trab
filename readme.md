@@ -170,3 +170,14 @@ Isso criará uma estrutura de diretório para seu chart Helm.
 helm install nome-da-liberacao ./nome-do-chart
 ```
 Isso instalará sua aplicação no cluster Kubernetes usando o Helm.
+
+5. **Verifique se a aplicação está funcionando corretamente:**
+``` bash
+kubectl get pods
+```
+Isso deve retornar uma lista com os pods em execução no cluster. Se tudo estiver funcionando corretamente, você verá um pod com o nome da liberação que você criou no passo anterior.
+
+6. **Teste a aplicação:**
+``` bash
+kubectl --namespace default port-forward $POD_NAME 3000:$CONTAINER_PORT
+```
